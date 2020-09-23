@@ -2,16 +2,16 @@ const Memory = require("./memory");
 const memory = new Memory();
 class Array {
   constructor() {
-    this.memory = new Float64Array(1024);
+    // this.memory = new Float64Array(10);
     this.head = 0;
     this.length = 0;
+    this.capacity = 0;
     this.ptr = memory.allocate(this.length);
   }
   push(value) {
-    if (this.length >= this._capacity) {
+    if (this.length >= this.capacity) {
       this._resize((this.length + 1) * Array.SIZE_RATIO);
     }
-
     memory.set(this.ptr + this.length, value);
     this.length++;
   }
@@ -23,7 +23,7 @@ class Array {
     }
     memory.copy(this.ptr, oldPtr, this.length);
     memory.free(oldPtr);
-    this._capacity = size;
+    this.capacity = size;
   }
   allocate(size) {
     if (this.head + size > this.memory.length) {
@@ -35,14 +35,11 @@ class Array {
     this.head += size;
     return start;
   }
-
   free(ptr) {}
-
   copy(toIdx, fromIdx, size) {
     if (fromIdx === toIdx) {
       return;
     }
-
     if (fromIdx > toIdx) {
       // Iterate forwards
       for (let i = 0; i < size; i++) {
@@ -61,7 +58,6 @@ class Array {
     }
     return memory.get(this.ptr + index);
   }
-
   pop() {
     if (this.length == 0) {
       throw new Error("Index error");
@@ -75,7 +71,7 @@ class Array {
       throw new Error("Index error");
     }
 
-    if (this.length >= this._capacity) {
+    if (this.length >= this.capacity) {
       this._resize((this.length + 1) * Array.SIZE_RATIO);
     }
 
