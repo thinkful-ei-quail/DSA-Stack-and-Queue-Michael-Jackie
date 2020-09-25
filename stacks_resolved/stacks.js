@@ -35,7 +35,6 @@ function main() {
   starTrek.pop();
   starTrek.pop();
   starTrek.pop();
-  // starTrek.pop('McCoy')
   return starTrek;
 }
 console.log(main());
@@ -122,3 +121,21 @@ console.log("1st Pcheck should be true:", parenthesesCheck('()()()()()()()()'));
 console.log("2nd Pcheck should be false:", parenthesesCheck("(("));
 console.log("3rd Pcheck should be false:", parenthesesCheck("))"));
 console.log("4th Pcheck should be false:", parenthesesCheck(")"));
+
+// #4 Extension excercise
+// function parenthesesCheckToo(str) {
+//   for (let i = 0; i < str.length; i++) {
+//     if (str[i] === "(" || str[i] === "{" || str[i] === "[") {
+//       strStack.push(str[i]);
+//     }
+//   }
+// }
+// console.log('Test 1, true: ', parenthesesCheckToo("()"))
+//#5 Sort stack
+//#6 Create a queue using Singly linked list
+//#7 Create a queue class using Doubly linked List
+//#8 Queue implementation using a stack
+//#9 Square dance pairing
+//#10 The Ophidian Bank
+
+
