@@ -55,11 +55,11 @@ console.log('peek', peek(stack));
 
 function isEmpty(stack) {
     if (stack.top === null) {
-        return 'Stack is empty';
+        return true;
     } else {
 
         if (stack.top !== null) {
-            return 'items in stack';
+            return false;
         }
     }
 }
@@ -103,24 +103,33 @@ console.log(isPalindrome('Tauhida'));
 //#4
 function parenthesesCheck(str) {
     const strStack = new Stack();
+    const clsStack = new Stack();
     for (let i = 0; i < str.length; i++) {
+        console.log('STR LENGTH', str.length, 'Iter', i + 1);
         if (str[i] === '(') {
             strStack.push(str[i]);
             console.log('1st IF',strStack);
         }
-        if( str[i] === ')'){
-           // if(peek(strStack) === '(' && str[i] === ')')
+        if (peek(strStack) === '(' && str[i] === ')'){
                 strStack.pop();
-            console.log('2nd IF', strStack);
+                
+            console.log('2nd IF str', strStack);
+            console.log('2nd IF cls', clsStack);
+        }
+        if (isEmpty(strStack) && str[i] === ')'){
+            clsStack.push(str[i]);
+            console.log('3rd IF', clsStack);
         }
     }
-    console.log('COMPLETE', strStack);
+    console.log('STRING', isEmpty(strStack));
+    console.log('CLOSED', isEmpty(clsStack));
     
-    if(strStack.length === 0){
+    if (isEmpty(strStack) && isEmpty(clsStack)){
         return true;
     } else {
         return false;
     }
 }
-console.log('1st Pcheck should be true:',parenthesesCheck('()'));
+console.log('1st Pcheck should be false:', parenthesesCheck('()'));
+
 //console.log('2nd Pcheck should be false:',parenthesesCheck('(('));
