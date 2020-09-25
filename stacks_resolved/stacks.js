@@ -83,7 +83,7 @@ function display(stack) {
 console.log('display', display(stack));
 
 //#3
-function is_palindrome(str) {
+function isPalindrome(str) {
     str = str.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
     let reverse = new Stack();
     for (let i = 0; i < str.length; i++) {
@@ -95,7 +95,7 @@ function is_palindrome(str) {
     }
     return true;
 }
-console.log(is_palindrome('dad'));
-console.log(is_palindrome('A man, a plan, a canal: Panama'));
-console.log(is_palindrome('1001'));
-console.log(is_palindrome('Tauhida'));
+console.log(isPalindrome('dad'));
+console.log(isPalindrome('A man, a plan, a canal: Panama'));
+console.log(isPalindrome('1001'));
+console.log(isPalindrome('Tauhida'));
