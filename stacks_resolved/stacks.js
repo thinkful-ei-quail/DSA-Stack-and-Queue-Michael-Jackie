@@ -99,3 +99,28 @@ console.log(isPalindrome('dad'));
 console.log(isPalindrome('A man, a plan, a canal: Panama'));
 console.log(isPalindrome('1001'));
 console.log(isPalindrome('Tauhida'));
+
+//#4
+function parenthesesCheck(str) {
+    const strStack = new Stack();
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === '(') {
+            strStack.push(str[i]);
+            console.log('1st IF',strStack);
+        }
+        if( str[i] === ')'){
+           // if(peek(strStack) === '(' && str[i] === ')')
+                strStack.pop();
+            console.log('2nd IF', strStack);
+        }
+    }
+    console.log('COMPLETE', strStack);
+    
+    if(strStack.length === 0){
+        return true;
+    } else {
+        return false;
+    }
+}
+console.log('1st Pcheck should be true:',parenthesesCheck('()'));
+//console.log('2nd Pcheck should be false:',parenthesesCheck('(('));
