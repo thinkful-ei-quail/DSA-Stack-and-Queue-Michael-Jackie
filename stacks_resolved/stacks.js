@@ -23,6 +23,8 @@ class Stack {
     return node.data;
   }
 }
+
+//#1
 function main() {
   const starTrek = new Stack;
   starTrek.push('Kirk');
@@ -40,6 +42,8 @@ console.log(main());
 const stack = main();
 console.log('STACK', stack);
 
+
+//#2
 function peek(stack) {
   if (stack.top === null) {
     return 'stack is empty';
@@ -76,3 +80,21 @@ function display(stack) {
 }
 
 console.log('display', display(stack));
+
+//#3
+function is_palindrome(s) {
+  s = s.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+  let reverse = new Stack();
+  for (let i = 0; i < s.length; i++) {
+    reverse.push(s.charAt(i));
+  }
+  for (let j = 0; j < s.length; j++) {
+    if (s[j] === reverse.pop()) continue;
+    else return false;
+  }
+  return true;
+}
+console.log(is_palindrome('dad'));
+console.log(is_palindrome('A man, a plan, a canal: Panama'));
+console.log(is_palindrome('1001'));
+console.log(is_palindrome('Tauhida'));
